@@ -1,3 +1,19 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.app-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .app-name {
   text-align: center;
   background-color: #282c34;
@@ -20,4 +36,23 @@
   border: 1px solid lightgray;
   border-radius: 4px;
   background-color: crimson;
+}
+
+.button-container {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.3rem;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ced4da;
+}
+
+.todo-item span {
+  flex-grow: 1;
+  margin-left: 0.5rem;
 }

@@ -57,14 +57,18 @@ function App() {
     setItems(updatedItems);
   }
 
-  function Item ({id, content, done, onDelete}) {
+  function Item ({id, content, onDelete}) {
     return(
-      <li key={id}>
+      <li key={id} className='todo-item'>
         {/* <input className="form-check-input" type="checkbox" aria-label="..."/> */}
-        <span className={done ? "done" : ""}>{content}</span>
-        <button className='btn btn-danger btn-sm' onClick={()=>onDelete(id)}>Delete</button>
-        <button className='btn btn-info btn-sm'onClick={()=>taskUp(id)}>up</button>
-        <button className='btn btn-info btn-sm' onClick={()=>taskDown(id)}>down</button>
+        <div>
+        <span className='button-container'>{content}</span>
+        <span className='button-container'>
+          <button className='btn btn-danger btn-sm' onClick={()=>onDelete(id)}>Delete</button>
+          <button className='btn btn-info btn-sm'onClick={()=>taskUp(id)}>up</button>
+          <button className='btn btn-info btn-sm' onClick={()=>taskDown(id)}>down</button>
+        </span>
+        </div>
       </li>
     )
   };
@@ -77,10 +81,10 @@ function App() {
     };
    
   return (
-    <>
+    <div className='app-container'>
+      <h1 className='h1-primarly'>Todo List Andres</h1>
       <form className='form-group' onSubmit={handleOnSubmit} >
-        <h1 className='h1-primarly'>Todo List Andres</h1>
-        <input type='text' className='form-control' placeholder='Write a task'value={input} onChange={handleOnChange} ></input>
+        <input type='text' className='form-control input-text-field' placeholder='Write a task'value={input} onChange={handleOnChange} ></input>
         <button type='submit' className='btn btn-primary'>Add</button>
       </form>
       <ul>
@@ -88,7 +92,7 @@ function App() {
           <Item key={item.id} {...item} onDelete={handleDelete}/> 
           ))}
       </ul>
-    </>
+    </div>
   )
 }
 
