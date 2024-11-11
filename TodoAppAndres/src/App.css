@@ -56,3 +56,9 @@ body {
   flex-grow: 1;
   margin-left: 0.5rem;
 }
+
+.form-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
