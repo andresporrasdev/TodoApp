@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { v4 as uuid} from "uuid";
@@ -10,7 +10,11 @@ function App() {
     { id: 2, content: "learn React", done: false },
   ]);
   const [input, setInput] = useState("")
- 
+
+  useEffect(() => {
+    console.log("Input value is ", input)
+  }, [input]);
+
   const handleOnChange = e => {
     setInput(e.target.value)
     console.log(input)
@@ -21,6 +25,7 @@ function App() {
     setItems([{id: uuid(), content: input, done: false}, ...items])
       console.log("calling Submit", items)
       setInput("")
+      console.log("Input value is ", input)
   }
 
   const handleDelete = id => {
@@ -55,7 +60,7 @@ function App() {
   function Item ({id, content, done, onDelete}) {
     return(
       <li key={id}>
-        <input className="form-check-input" type="checkbox" aria-label="..."/>
+        {/* <input className="form-check-input" type="checkbox" aria-label="..."/> */}
         <span className={done ? "done" : ""}>{content}</span>
         <button className='btn btn-danger btn-sm' onClick={()=>onDelete(id)}>Delete</button>
         <button className='btn btn-info btn-sm'onClick={()=>taskUp(id)}>up</button>
@@ -73,9 +78,9 @@ function App() {
    
   return (
     <>
-      <form className='form-group' onSubmit={handleOnSubmit} onChange={handleOnChange}>
+      <form className='form-group' onSubmit={handleOnSubmit} >
         <h1 className='h1-primarly'>Todo List Andres</h1>
-        <input type='text' className='form-control' placeholder='Write a task' ></input>
+        <input type='text' className='form-control' placeholder='Write a task'value={input} onChange={handleOnChange} ></input>
         <button type='submit' className='btn btn-primary'>Add</button>
       </form>
       <ul>
